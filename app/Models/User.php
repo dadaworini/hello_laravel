@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //头像
+    public function gravatar($size = '100') {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "https://cdn.v2ex.com/gravatar/$hash?s=$size";
+    }
 }
