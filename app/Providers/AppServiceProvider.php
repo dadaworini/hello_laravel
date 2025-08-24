@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::guessPolicyNamesUsing(function (string $modelClass) {
             
+            \Illuminate\Pagination\Paginator::useBootstrap();
             return 'App\Policies\\'.class_basename($modelClass).'Policy';        
         });
     }
