@@ -82,4 +82,11 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function destroy(User $user) {
+        Gate::authorize('delete', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
+    }
+
 }
